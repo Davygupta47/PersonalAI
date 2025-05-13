@@ -23,7 +23,11 @@
 # misc
 .DS_Store
 *.pem
-
+#modelai
+PORT=5000
+MONGO_URI=mongodb://localhost:27017/chatbot
+GROQ_API_KEY=your_groq_api_key_here
+# local env files
 # debug
 npm-debug.log*
 yarn-debug.log*
