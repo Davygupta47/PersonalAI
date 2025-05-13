@@ -1,85 +1,126 @@
-"use client"
+"use client";
 
-import { Calendar, Clock, Plus } from "lucide-react"
-import { CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { FeatureCard } from "./feature-card"
+import React, { useState } from "react";
+import axios from "axios";
+//import { format } from "date-fns";
 
-interface DailySchedulerCardProps {
-  fullWidth?: boolean
-}
+export default function RoutineGenerator() {
+  const [mood] = useState("Nervous");
+  const [hasSchool, setHasSchool] = useState("Yes");
+  const [hasTuition, setHasTuition] = useState("Yes");
+  const [schoolStart, setSchoolStart] = useState("08:00");
+  const [schoolEnd, setSchoolEnd] = useState("14:00");
+  const [tuitionTime, setTuitionTime] = useState("17:00 - 18:00");
+  const [loading, setLoading] = useState(false);
+  const [tableData, setTableData] = useState<string[][] | null>(null);
+  const [error, setError] = useState("");
 
-export function DailySchedulerCard({ fullWidth = false }: DailySchedulerCardProps) {
-  const schedule = [
-    { time: "08:00 AM", task: "Morning Workout", completed: true },
-    { time: "09:30 AM", task: "Team Meeting", completed: true },
-    { time: "12:00 PM", task: "Lunch with Client", completed: false },
-    { time: "03:00 PM", task: "Project Review", completed: false },
-    { time: "06:00 PM", task: "Evening Run", completed: false },
-  ]
+  const parseMarkdownTable = (markdown: string) => {
+    const lines = markdown.split("\n").filter(l => l.startsWith("|"));
+    if (lines.length < 3) return null;
 
-  const today = new Date()
-  const formattedDate = today.toLocaleDateString("en-US", {
-    weekday: "long",
-    month: "long",
-    day: "numeric",
-  })
+    const headers = lines[0].split("|").map((h) => h.trim()).filter(Boolean);
+    const rows = lines.slice(2).map(line =>
+      line.split("|").map(cell => cell.trim()).filter(Boolean)
+    );
+
+    return [headers, ...rows];
+  };
+
+  const handleSubmit = async () => {
+    setLoading(true);
+    setError("");
+    setTableData(null);
+
+    try {
+      const response = await axios.post("/api/generateRoutine", {
+        mood,
+        hasSchool: hasSchool === "Yes",
+        hasTuition: hasTuition === "Yes",
+        schoolStart,
+        schoolEnd,
+        tuitionTime,
+      });
+
+      const parsed = parseMarkdownTable(response.data.content);
+      if (parsed) {
+        setTableData(parsed);
+      } else {
+        setError("Could not parse table.");
+      }
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Failed to generate routine.");
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
-    <FeatureCard fullWidth={fullWidth} className={fullWidth ? "h-[70vh]" : "h-[400px]"}>
-      <CardHeader className="bg-gradient-to-r from-violet-500/10 to-purple-500/10 pb-2">
-        <CardTitle className="text-xl">Daily Scheduler</CardTitle>
-      </CardHeader>
-      <CardContent className={`overflow-y-auto ${fullWidth ? "h-[calc(70vh-120px)]" : "h-[280px]"}`}>
-        <div className="mb-4 flex items-center justify-between">
-          <div className="flex items-center">
-            <Calendar className="mr-2 h-5 w-5 text-muted-foreground" />
-            <span className="font-medium">{formattedDate}</span>
+    <main className="max-w-xl mx-auto p-6">
+      <h1 className="text-3xl font-bold mb-4">🗓️ AI-Powered Daily Routine Generator</h1>
+      <p className="mb-4">Today you,re feeling <strong>{mood}</strong>. Let,s create your day!</p>
+
+      <div className="mb-4">
+        <label className="block font-semibold">Do you have school today?</label>
+        <select value={hasSchool} onChange={(e) => setHasSchool(e.target.value)} className="w-full border p-2 rounded">
+          <option className="text-black">Yes</option>
+          <option className="text-black">No</option>
+        </select>
+        {hasSchool === "Yes" && (
+          <div className="flex gap-2 mt-2">
+            <input type="time" value={schoolStart} onChange={(e) => setSchoolStart(e.target.value)} className="border p-2 rounded w-1/2" />
+            <input type="time" value={schoolEnd} onChange={(e) => setSchoolEnd(e.target.value)} className="border p-2 rounded w-1/2" />
           </div>
-          <Button variant="outline" size="sm">
-            <Clock className="mr-1 h-3 w-3" />
-            View Calendar
-          </Button>
+        )}
+      </div>
+
+      <div className="mb-4">
+        <label className="block font-semibold">Do you have tuition today?</label>
+        <select value={hasTuition} onChange={(e) => setHasTuition(e.target.value)} className="w-full border p-2 rounded">
+          <option className="text-black">Yes</option>
+          <option className="text-black">No</option>
+        </select>
+        {hasTuition === "Yes" && (
+          <input type="text" value={tuitionTime} onChange={(e) => setTuitionTime(e.target.value)} className="w-full mt-2 border p-2 rounded" />
+        )}
+      </div>
+
+      <button
+        onClick={handleSubmit}
+        className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"
+        disabled={loading}
+      >
+        {loading ? "Generating..." : "Generate Routine"}
+      </button>
+
+      {error && <p className="text-red-500 mt-4">{error}</p>}
+
+      {tableData && (
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full table-auto border-collapse border border-gray-300">
+            <thead>
+              <tr className="bg-gray-100 text-black">
+                {tableData[0].map((header, i) => (
+                  <th key={i} className="border p-2">{header}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {tableData.slice(1).map((row, rowIndex) => (
+                <tr key={rowIndex}>
+                  {row.map((cell, cellIndex) => (
+                    <td key={cellIndex} className="border p-2">{cell}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-
-        <div className="relative space-y-4 pl-4">
-          {/* Timeline line */}
-          <div className="absolute left-0 top-0 h-full w-0.5 bg-muted"></div>
-
-          {schedule.map((item, index) => (
-            <div key={index} className="relative">
-              {/* Timeline dot */}
-              <div
-                className={`absolute -left-[17px] top-1.5 h-3 w-3 rounded-full border-2 ${
-                  item.completed ? "border-green-500 bg-green-500" : "border-muted-foreground bg-background"
-                }`}
-              ></div>
-
-              <div
-                className={`rounded-lg border p-3 ${
-                  item.completed ? "border-green-500/20 bg-green-500/5" : "border-muted bg-card"
-                }`}
-              >
-                <div className="flex items-center justify-between">
-                  <h4 className="font-medium">{item.task}</h4>
-                  <span className="text-sm text-muted-foreground">{item.time}</span>
-                </div>
-                <div className="mt-1 flex justify-end">
-                  <Button variant={item.completed ? "outline" : "default"} size="sm" className="h-7 text-xs">
-                    {item.completed ? "Completed" : "Mark Complete"}
-                  </Button>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </CardContent>
-      <CardFooter className="border-t bg-card/50">
-        <Button className="w-full">
-          <Plus className="mr-1 h-4 w-4" />
-          Add New Task
-        </Button>
-      </CardFooter>
-    </FeatureCard>
-  )
+      )}
+    </main>
+  );
 }

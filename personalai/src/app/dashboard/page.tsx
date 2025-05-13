@@ -14,7 +14,7 @@ import { MoodDetectorCard } from "@/components/dashboard/mood-detector-card"
 import { MusicRecommenderCard } from "@/components/dashboard/music-recommender-card"
 import { BookRecommenderCard } from "@/components/dashboard/book-recommender-card"
 import { FeatureCard } from "@/components/dashboard/fashion-try-on-card"
-import { DailySchedulerCard } from "@/components/dashboard/daily-scheduler-card"
+import  RoutineGenerator from "@/components/dashboard/daily-scheduler-card"
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState("all")
@@ -59,7 +59,7 @@ export default function Dashboard() {
               <FeatureCard>
                 <div>Fashion Try-On Feature</div>
               </FeatureCard>
-              <DailySchedulerCard />
+              <RoutineGenerator />
             </div>
           </TabsContent>
 
@@ -98,7 +98,7 @@ export default function Dashboard() {
 
           <TabsContent value="schedule">
             <div className="grid grid-cols-1">
-              <DailySchedulerCard fullWidth />
+              <RoutineGenerator/>
             </div>
           </TabsContent>
         </Tabs>
