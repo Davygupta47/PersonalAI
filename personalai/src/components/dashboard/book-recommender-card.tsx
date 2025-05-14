@@ -1,95 +1,69 @@
-"use client"
+"use client";
+import { useState } from "react";
 
-import { Book, BookOpen } from "lucide-react"
-import { CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { FeatureCard } from "./feature-card"
+type Book = {
+  title: string;
+  author: string;
+  image: string;
+};
 
-interface BookRecommenderCardProps {
-  fullWidth?: boolean
-}
+export default function BookRecommenderCard() {
+  const [mood, setMood] = useState("");
+  const [books, setBooks] = useState<Book[]>([]);
+  const [error, setError] = useState("");
 
-export function BookRecommenderCard({ fullWidth = false }: BookRecommenderCardProps) {
-  const books = [
-    {
-      title: "Atomic Habits",
-      author: "James Clear",
-      genre: "Self-Help",
-      rating: 4.8,
-      cover: "/placeholder.svg?height=120&width=80",
-    },
-    {
-      title: "The Midnight Library",
-      author: "Matt Haig",
-      genre: "Fiction",
-      rating: 4.5,
-      cover: "/placeholder.svg?height=120&width=80",
-    },
-    {
-      title: "Project Hail Mary",
-      author: "Andy Weir",
-      genre: "Sci-Fi",
-      rating: 4.7,
-      cover: "/placeholder.svg?height=120&width=80",
-    },
-  ]
+  const fetchBooks = async () => {
+    setError("");
+    try {
+      const res = await fetch(`http://127.0.0.1:5000/recommend?mood=${mood}`);
+      if (!res.ok) {
+        const data = await res.json();
+        setError(data.error || "Something went wrong");
+        setBooks([]);
+        return;
+      }
+      const data = await res.json();
+      setBooks(data.books);
+    } catch {
+      setError("Could not fetch recommendations");
+    }
+  };
 
   return (
-    <FeatureCard fullWidth={fullWidth} className={fullWidth ? "h-[70vh]" : "h-[400px]"}>
-      <CardHeader className="bg-gradient-to-r from-amber-500/10 to-yellow-500/10 pb-2">
-        <CardTitle className="text-xl">Book Recommender</CardTitle>
-      </CardHeader>
-      <CardContent className={`overflow-y-auto ${fullWidth ? "h-[calc(70vh-120px)]" : "h-[280px]"}`}>
-        <div className="mb-4">
-          <h3 className="mb-2 font-medium">Based on your interests</h3>
-          <div className="space-y-4">
-            {books.map((book, index) => (
-              <div key={index} className="flex gap-4 rounded-lg bg-card p-3 shadow-sm">
-                <div className="h-[120px] w-[80px] overflow-hidden rounded-md bg-muted">
-                  <img src={book.cover || "/placeholder.svg"} alt={book.title} className="h-full w-full object-cover" />
-                </div>
-                <div className="flex flex-1 flex-col justify-between">
-                  <div>
-                    <h4 className="text-lg font-semibold">{book.title}</h4>
-                    <p className="text-sm text-muted-foreground">by {book.author}</p>
-                    <p className="text-xs text-muted-foreground">{book.genre}</p>
-                    <div className="mt-1 flex items-center">
-                      <div className="flex">
-                        {[...Array(5)].map((_, i) => (
-                          <svg
-                            key={i}
-                            className={`h-4 w-4 ${i < Math.floor(book.rating) ? "fill-yellow-500" : "fill-muted"}`}
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                          >
-                            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                          </svg>
-                        ))}
-                      </div>
-                      <span className="ml-1 text-xs text-muted-foreground">{book.rating}</span>
-                    </div>
-                  </div>
-                  <div className="flex gap-2">
-                    <Button variant="outline" size="sm" className="mt-2">
-                      <BookOpen className="mr-1 h-3 w-3" />
-                      Preview
-                    </Button>
-                    <Button size="sm" className="mt-2">
-                      <Book className="mr-1 h-3 w-3" />
-                      Add to List
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            ))}
+    <main className="p-6 max-w-xl mx-auto">
+      <h1 className="text-2xl font-bold mb-4 text-center">📚 Mood Book Recommender</h1>
+      <div className="flex gap-2 mb-4">
+        <input
+          type="text"
+          placeholder="Enter your mood (happy, sad, etc)"
+          value={mood}
+          onChange={(e) => setMood(e.target.value)}
+          className="border p-2 flex-grow rounded"
+        />
+        <button
+          onClick={fetchBooks}
+          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+        >
+          Get Books
+        </button>
+      </div>
+
+      {error && <p className="text-red-600 mb-4">{error}</p>}
+
+      <div className="grid grid-cols-1 gap-4">
+        {books.map((book, index) => (
+          <div
+            key={index}
+            className="border p-4 rounded shadow flex items-center gap-4"
+          >
+            {/* <img src={book.image} alt={book.title} className="w-16 h-24 object-cover rounded" /> */}
+            <div>
+              <h2 className="font-semibold">{book.title}</h2>
+              <p className="text-sm text-gray-600">{book.author}</p>
+            </div>
           </div>
-        </div>
-      </CardContent>
-      <CardFooter className="border-t bg-card/50">
-        <Button variant="outline" className="w-full">
-          View All Recommendations
-        </Button>
-      </CardFooter>
-    </FeatureCard>
-  )
+        ))}
+      </div>
+    </main>
+  );
 }
