@@ -1,15 +1,46 @@
 from flask import Flask, request, jsonify
 import pandas as pd
 from flask_cors import CORS
+from pymongo import MongoClient
 
 app = Flask(__name__)
 CORS(app, origins=["http://localhost:3000"])
+
+# MongoDB setup
+client = MongoClient("mongodb://localhost:27017/")
+db = client["personalai"]
+moods_collection = db["moods"]
 
 df = pd.read_csv("books_with_emotion.csv", encoding='ISO-8859-1')
 df = df[df['Image-URL-M'].notnull() & df['Image-URL-M'].str.startswith("http")]
 
 mv = pd.read_csv("movie_recommendation_dataset_final.csv", encoding='ISO-8859-1')
 mv = mv[mv['link'].notnull() & mv['link'].str.startswith("http")]
+
+
+@app.route("/mood", methods=["POST"])
+def set_mood():
+    data = request.get_json()
+    user_id = data.get("user_id")
+    mood = data.get("mood")
+    if not user_id or not mood:
+        return jsonify({"error": "user_id and mood are required"}), 400
+    moods_collection.update_one(
+        {"user_id": user_id},
+        {"$set": {"mood": mood}},
+        upsert=True
+    )
+    return jsonify({"success": True})
+
+@app.route("/mood", methods=["GET"])
+def get_mood():
+    user_id = request.args.get("user_id")
+    if not user_id:
+        return jsonify({"error": "user_id is required"}), 400
+    mood_doc = moods_collection.find_one({"user_id": user_id})
+    if not mood_doc:
+        return jsonify({"error": "Mood not found"}), 404
+    return jsonify({"user_id": user_id, "mood": mood_doc["mood"]})
 
 @app.route("/recommend", methods=["GET"])
 def recommend_books_by_mood():
