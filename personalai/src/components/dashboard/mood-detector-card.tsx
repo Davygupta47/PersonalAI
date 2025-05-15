@@ -103,7 +103,7 @@ export function MoodDetectorCard({ fullWidth = false }: MoodDetectorCardProps) {
 
           <div>
             <label htmlFor="q3" className="block text-sm font-medium mb-1">
-              3. How's the weather?
+              3. How&apos;s the weather?
             </label>
             <Input
               id="q3"
