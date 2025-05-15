@@ -50,7 +50,7 @@ export default function MovieRecommenderCard({
 
     try {
       const response = await fetch(
-        `http://127.0.0.1:5000/movies?genre=${genre}&emotion=${mood}`
+        `https://personalai-y76b.onrender.com/movies?genre=${genre}&emotion=${mood}`
       );
       const data = await response.json();
 

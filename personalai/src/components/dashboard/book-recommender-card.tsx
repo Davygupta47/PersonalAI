@@ -31,7 +31,7 @@ export default function BookRecommenderCard() {
     setError("")
 
     try {
-      const res = await fetch(`http://127.0.0.1:5000/recommend?mood=${encodeURIComponent(mood)}`)
+      const res = await fetch(`https://personalai-y76b.onrender.com/recommend?mood=${encodeURIComponent(mood)}`)
       if (!res.ok) {
         const data = await res.json()
         setError(data.error || "Something went wrong")
