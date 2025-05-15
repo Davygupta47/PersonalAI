@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import BallPits from "@/components/ui/ball-pits-background"
+// import BallPits from "@/components/ui/ball-pits-background"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ChatbotCard } from "@/components/dashboard/chatbot-card"
 import { MoodDetectorCard } from "@/components/dashboard/mood-detector-card"
@@ -10,10 +10,11 @@ import  MusicRecommenderCard  from "@/components/dashboard/music-recommender-car
 import BookRecommenderCard from "@/components/dashboard/book-recommender-card"
 import MovieRecommenderCard from "@/components/dashboard/movie-card"
 import RoutineGenerator from "@/components/dashboard/daily-scheduler-card"
+import AuroraBackground from "@/components/aurora-back"
 
 export default function Dashboard() {
-  const [activeTab, setActiveTab] = useState("all")
-  const [scrolled, setScrolled] = useState(false)
+  const [, setActiveTab] = useState("all")
+  const [, setScrolled] = useState(false)
 
   // Handle scroll effect for the "all" tab
   useEffect(() => {
@@ -28,8 +29,9 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Aurora Background */}
-      <BallPits ballCount={60} ballSize={15} />
+      {/* <BallPits ballCount={60} ballSize={15} /> */}
       {/* Floating Particles */}
+      <AuroraBackground></AuroraBackground>
 
       <div className="relative z-10 px-4 py-6 md:px-8">
         <div className="mx-auto w-full max-w-7xl space-y-8">

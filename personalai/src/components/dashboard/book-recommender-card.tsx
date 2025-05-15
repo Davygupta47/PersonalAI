@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
 import { BookOpen, Search, Loader2 } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
+import Image from "next/image"
 
 type Book = {
   title: string
@@ -116,11 +117,11 @@ export default function BookRecommenderCard() {
                         <div className="flex p-0">
                           <div className="w-24 h-32 bg-slate-200 dark:bg-slate-700 flex-shrink-0">
                             {book.image ? (
-                              <img
-                                src={book.image || "/placeholder.svg"}
-                                alt={book.title}
-                                className="w-full h-full object-cover"
-                              />
+                              <Image
+                                          src={book.image}
+                                          alt={book.title}
+                                          className="h-full w-full object-cover"
+                                        />
                             ) : (
                               <div className="w-full h-full flex items-center justify-center">
                                 <BookOpen className="h-8 w-8 text-slate-400" />

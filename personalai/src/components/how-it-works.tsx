@@ -2,10 +2,9 @@
 
 import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
-import { MessageSquare, Music, BookOpen, ShoppingBag, Calendar, BookAudioIcon, TheaterIcon, CameraOffIcon, CameraIcon, Theater } from "lucide-react"
+import { MessageSquare, Music, BookOpen, Calendar, Theater } from "lucide-react"
 import AuroraBackground from "@/components/aurora-back"
 import FloatingParticles from "@/components/floating-part"
-import MovieRecommenderCard from "./dashboard/movie-card"
 
 export default function HowItWorks() {
   const ref = useRef(null)

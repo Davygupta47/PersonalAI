@@ -37,7 +37,7 @@ const BallPits: React.FC<BallPitsProps> = ({
     canvas.width = window.innerWidth
     canvas.height = window.innerHeight
 
-    let balls: Ball[] = Array.from({ length: ballCount }, () => ({
+    const balls: Ball[] = Array.from({ length: ballCount }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       dx: (Math.random() - 0.5) * 2,
