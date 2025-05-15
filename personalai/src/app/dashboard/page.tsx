@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import BallPits from "@/components/ui/ball-pits-background"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ChatbotCard } from "@/components/dashboard/chatbot-card"
 import { MoodDetectorCard } from "@/components/dashboard/mood-detector-card"
@@ -27,10 +28,8 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Aurora Background */}
-      <div className="absolute inset-0 bg-background/80 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-blue-500/10 to-teal-500/10 animate-aurora"></div>
-        <div className="absolute inset-0 bg-gradient-to-tr from-pink-500/10 via-indigo-500/10 to-cyan-500/10 animate-aurora-reverse"></div>
-      </div>
+      <BallPits ballCount={60} ballSize={15} />
+      {/* Floating Particles */}
 
       <div className="relative z-10 px-4 py-6 md:px-8">
         <div className="mx-auto w-full max-w-7xl space-y-8">

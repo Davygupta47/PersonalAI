@@ -34,7 +34,14 @@ export default function Home() {
         <FloatingParticles />
 
         <div className="z-20 flex flex-col items-center justify-center px-4 text-center">
-          <Image className="mb-15" src="/logo.png" alt="Logo" width={200} height={200} />
+          <Image
+            src="/logo.png"
+            alt="Logo"
+            width={200}
+            height={200}
+            className="bg-white rounded-xl p-2 shadow-lg"
+          />
+
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
