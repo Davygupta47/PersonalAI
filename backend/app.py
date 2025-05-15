@@ -14,17 +14,17 @@ load_dotenv()  # Load from .env file
 app = Flask(__name__)
 CORS(app, resources={
     r"/recommend/*": {
-        "origins": ["http://localhost:3000", "http://192.168.0.142:3000"],
+        "origins": ["http://localhost:3000", "http://192.168.0.142:3000","https://personal-ai-six.vercel.app"],
         "methods": ["GET", "POST"],
-        "allow_headers": ["Content-Type"]
+        "allow_headers": ["Content-Type"],
     },
     r"/movies/*": {
-        "origins": ["http://localhost:3000", "http://192.168.0.142:3000"],
+        "origins": ["http://localhost:3000", "http://192.168.0.142:3000","https://personal-ai-six.vercel.app"],
         "methods": ["GET", "POST"],
         "allow_headers": ["Content-Type"]
     },
      r"/play-song/*": {
-        "origins": ["http://localhost:3000", "http://192.168.0.142:3000"],
+        "origins": ["http://localhost:3000", "http://192.168.0.142:3000","https://personal-ai-six.vercel.app"],
         "methods": ["GET", "POST"],
         "allow_headers": ["Content-Type"]
     }

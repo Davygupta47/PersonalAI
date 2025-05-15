@@ -120,6 +120,8 @@ export default function BookRecommenderCard() {
                               <Image
                                           src={book.image}
                                           alt={book.title}
+                                          width={96}
+                                          height={128}
                                           className="h-full w-full object-cover"
                                         />
                             ) : (
