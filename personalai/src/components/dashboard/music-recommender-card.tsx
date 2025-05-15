@@ -60,7 +60,7 @@ export default function MusicRecommenderCard() {
 
     try {
       const response = await fetch(
-        `http://127.0.0.1:5000/play-song?emotion=${emotion}`,
+        `https://personalai-y76b.onrender.com/play-song?emotion=${emotion}`,
         {
           method: "GET",
         }
