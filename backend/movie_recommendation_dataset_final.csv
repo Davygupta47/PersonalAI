@@ -1,0 +1,151 @@
+name,director,language,genre,emotion,link
+Casablanca 1,Michael Curtiz,English,Comedy,Happy,https://www.imdb.com/title/tt5329042/
+The Notebook 2,Nick Cassavetes,English,Horror,Angry,https://www.imdb.com/title/tt2357340/
+Casablanca 3,Michael Curtiz,English,Horror,Angry,https://www.imdb.com/title/tt6808018/
+The Shining 4,Stanley Kubrick,English,Thriller,Angry,https://www.imdb.com/title/tt4367778/
+Arrival 5,Denis Villeneuve,English,Fantasy,Exciting,https://www.imdb.com/title/tt5910239/
+12 Angry Men 6,Sidney Lumet,English,Adventure,Exciting,https://www.imdb.com/title/tt2707266/
+Pan's Labyrinth 7,Guillermo del Toro,Spanish,Drama,Sad,https://www.imdb.com/title/tt8251258/
+12 Angry Men 8,Sidney Lumet,English,Sci-Fi,Energetic,https://www.imdb.com/title/tt6639021/
+The Intouchables 9,Olivier Nakache,French,Thriller,Angry,https://www.imdb.com/title/tt7272036/
+Her 10,Spike Jonze,English,Adventure,Exciting,https://www.imdb.com/title/tt4605269/
+The Notebook 11,Nick Cassavetes,English,Adventure,Exciting,https://www.imdb.com/title/tt6465892/
+Arrival 12,Denis Villeneuve,English,Adventure,Exciting,https://www.imdb.com/title/tt3415750/
+Eternal Sunshine 13,Michel Gondry,English,Drama,Sad,https://www.imdb.com/title/tt4266238/
+The Shining 14,Stanley Kubrick,English,Horror,Angry,https://www.imdb.com/title/tt4838137/
+Her 15,Spike Jonze,English,Comedy,Happy,https://www.imdb.com/title/tt3441896/
+The Intouchables 16,Olivier Nakache,French,Horror,Angry,https://www.imdb.com/title/tt6809687/
+Eternal Sunshine 17,Michel Gondry,English,Comedy,Happy,https://www.imdb.com/title/tt8212278/
+The Shining 18,Stanley Kubrick,English,Drama,Sad,https://www.imdb.com/title/tt6727550/
+Her 19,Spike Jonze,English,Sci-Fi,Energetic,https://www.imdb.com/title/tt1434587/
+Arrival 20,Denis Villeneuve,English,Sci-Fi,Energetic,https://www.imdb.com/title/tt8888143/
+Her 21,Spike Jonze,English,Thriller,Angry,https://www.imdb.com/title/tt1465219/
+Casablanca 22,Michael Curtiz,English,Sci-Fi,Energetic,https://www.imdb.com/title/tt1782968/
+Casablanca 23,Michael Curtiz,English,Thriller,Angry,https://www.imdb.com/title/tt5363990/
+The Intouchables 24,Olivier Nakache,French,Thriller,Angry,https://www.imdb.com/title/tt2281795/
+Eternal Sunshine 25,Michel Gondry,English,Comedy,Happy,https://www.imdb.com/title/tt1912664/
+12 Angry Men 26,Sidney Lumet,English,Classic,Neutral,https://www.imdb.com/title/tt1082106/
+12 Angry Men 27,Sidney Lumet,English,Adventure,Exciting,https://www.imdb.com/title/tt8075381/
+12 Angry Men 28,Sidney Lumet,English,Thriller,Angry,https://www.imdb.com/title/tt6784584/
+Casablanca 29,Michael Curtiz,English,Adventure,Exciting,https://www.imdb.com/title/tt6695734/
+Arrival 30,Denis Villeneuve,English,Drama,Sad,https://www.imdb.com/title/tt6275333/
+12 Angry Men 31,Sidney Lumet,English,Comedy,Happy,https://www.imdb.com/title/tt1580593/
+Arrival 32,Denis Villeneuve,English,Sci-Fi,Energetic,https://www.imdb.com/title/tt8812647/
+Pan's Labyrinth 33,Guillermo del Toro,Spanish,Drama,Sad,https://www.imdb.com/title/tt6143531/
+The Shining 34,Stanley Kubrick,English,Horror,Angry,https://www.imdb.com/title/tt3057268/
+Casablanca 35,Michael Curtiz,English,Horror,Angry,https://www.imdb.com/title/tt1895515/
+The Shining 36,Stanley Kubrick,English,Classic,Neutral,https://www.imdb.com/title/tt8995609/
+The Shining 37,Stanley Kubrick,English,Sci-Fi,Energetic,https://www.imdb.com/title/tt4907574/
+Eternal Sunshine 38,Michel Gondry,English,Fantasy,Exciting,https://www.imdb.com/title/tt7067649/
+Indiana Jones 39,Steven Spielberg,English,Romance,Happy,https://www.imdb.com/title/tt3047552/
+Casablanca 40,Michael Curtiz,English,Classic,Neutral,https://www.imdb.com/title/tt7577065/
+Casablanca 41,Michael Curtiz,English,Sci-Fi,Energetic,https://www.imdb.com/title/tt8741789/
+Arrival 42,Denis Villeneuve,English,Adventure,Exciting,https://www.imdb.com/title/tt2195835/
+12 Angry Men 43,Sidney Lumet,English,Horror,Angry,https://www.imdb.com/title/tt1430801/
+Indiana Jones 44,Steven Spielberg,English,Comedy,Happy,https://www.imdb.com/title/tt2938864/
+12 Angry Men 45,Sidney Lumet,English,Fantasy,Exciting,https://www.imdb.com/title/tt3002606/
+Indiana Jones 46,Steven Spielberg,English,Drama,Sad,https://www.imdb.com/title/tt1937596/
+Arrival 47,Denis Villeneuve,English,Adventure,Exciting,https://www.imdb.com/title/tt1595547/
+The Shining 48,Stanley Kubrick,English,Thriller,Angry,https://www.imdb.com/title/tt4764547/
+Pan's Labyrinth 49,Guillermo del Toro,Spanish,Classic,Neutral,https://www.imdb.com/title/tt5107093/
+Eternal Sunshine 50,Michel Gondry,English,Classic,Neutral,https://www.imdb.com/title/tt8161031/
+Arrival 51,Denis Villeneuve,English,Romance,Happy,https://www.imdb.com/title/tt9551016/
+The Shining 52,Stanley Kubrick,English,Horror,Angry,https://www.imdb.com/title/tt1591887/
+Her 53,Spike Jonze,English,Classic,Neutral,https://www.imdb.com/title/tt7779738/
+Pan's Labyrinth 54,Guillermo del Toro,Spanish,Thriller,Angry,https://www.imdb.com/title/tt6880802/
+The Intouchables 55,Olivier Nakache,French,Horror,Angry,https://www.imdb.com/title/tt5319499/
+12 Angry Men 56,Sidney Lumet,English,Thriller,Angry,https://www.imdb.com/title/tt7514217/
+Arrival 57,Denis Villeneuve,English,Drama,Sad,https://www.imdb.com/title/tt2939308/
+12 Angry Men 58,Sidney Lumet,English,Sci-Fi,Energetic,https://www.imdb.com/title/tt8639770/
+The Shining 59,Stanley Kubrick,English,Adventure,Exciting,https://www.imdb.com/title/tt8987219/
+12 Angry Men 60,Sidney Lumet,English,Adventure,Exciting,https://www.imdb.com/title/tt4088276/
+12 Angry Men 61,Sidney Lumet,English,Drama,Sad,https://www.imdb.com/title/tt6311993/
+Arrival 62,Denis Villeneuve,English,Adventure,Exciting,https://www.imdb.com/title/tt3110743/
+Indiana Jones 63,Steven Spielberg,English,Classic,Neutral,https://www.imdb.com/title/tt7468234/
+12 Angry Men 64,Sidney Lumet,English,Horror,Angry,https://www.imdb.com/title/tt1114770/
+Arrival 65,Denis Villeneuve,English,Classic,Neutral,https://www.imdb.com/title/tt9785640/
+Eternal Sunshine 66,Michel Gondry,English,Horror,Angry,https://www.imdb.com/title/tt8232201/
+12 Angry Men 67,Sidney Lumet,English,Romance,Happy,https://www.imdb.com/title/tt7955393/
+The Intouchables 68,Olivier Nakache,French,Fantasy,Exciting,https://www.imdb.com/title/tt7682974/
+The Intouchables 69,Olivier Nakache,French,Horror,Angry,https://www.imdb.com/title/tt7656871/
+Indiana Jones 70,Steven Spielberg,English,Adventure,Exciting,https://www.imdb.com/title/tt7856998/
+Indiana Jones 71,Steven Spielberg,English,Sci-Fi,Energetic,https://www.imdb.com/title/tt4603220/
+The Notebook 72,Nick Cassavetes,English,Sci-Fi,Energetic,https://www.imdb.com/title/tt5934595/
+Casablanca 73,Michael Curtiz,English,Thriller,Angry,https://www.imdb.com/title/tt5396396/
+Casablanca 74,Michael Curtiz,English,Thriller,Angry,https://www.imdb.com/title/tt5587913/
+Eternal Sunshine 75,Michel Gondry,English,Drama,Sad,https://www.imdb.com/title/tt6759316/
+Her 76,Spike Jonze,English,Comedy,Happy,https://www.imdb.com/title/tt9874299/
+Arrival 77,Denis Villeneuve,English,Classic,Neutral,https://www.imdb.com/title/tt4440365/
+Eternal Sunshine 78,Michel Gondry,English,Adventure,Exciting,https://www.imdb.com/title/tt8031770/
+The Intouchables 79,Olivier Nakache,French,Adventure,Exciting,https://www.imdb.com/title/tt2617187/
+Indiana Jones 80,Steven Spielberg,English,Fantasy,Exciting,https://www.imdb.com/title/tt4412925/
+The Shining 81,Stanley Kubrick,English,Classic,Neutral,https://www.imdb.com/title/tt2405329/
+The Intouchables 82,Olivier Nakache,French,Romance,Happy,https://www.imdb.com/title/tt4586099/
+The Notebook 83,Nick Cassavetes,English,Drama,Sad,https://www.imdb.com/title/tt1949759/
+Indiana Jones 84,Steven Spielberg,English,Drama,Sad,https://www.imdb.com/title/tt3155301/
+Eternal Sunshine 85,Michel Gondry,English,Drama,Sad,https://www.imdb.com/title/tt7218209/
+Indiana Jones 86,Steven Spielberg,English,Thriller,Angry,https://www.imdb.com/title/tt9346566/
+Pan's Labyrinth 87,Guillermo del Toro,Spanish,Comedy,Happy,https://www.imdb.com/title/tt7983081/
+Her 88,Spike Jonze,English,Romance,Happy,https://www.imdb.com/title/tt4778493/
+Pan's Labyrinth 89,Guillermo del Toro,Spanish,Horror,Angry,https://www.imdb.com/title/tt5051873/
+12 Angry Men 90,Sidney Lumet,English,Classic,Neutral,https://www.imdb.com/title/tt1765221/
+Her 91,Spike Jonze,English,Sci-Fi,Energetic,https://www.imdb.com/title/tt7691326/
+12 Angry Men 92,Sidney Lumet,English,Horror,Angry,https://www.imdb.com/title/tt3158564/
+Eternal Sunshine 93,Michel Gondry,English,Adventure,Exciting,https://www.imdb.com/title/tt3290877/
+The Notebook 94,Nick Cassavetes,English,Comedy,Happy,https://www.imdb.com/title/tt6283128/
+Pan's Labyrinth 95,Guillermo del Toro,Spanish,Romance,Happy,https://www.imdb.com/title/tt7663654/
+Indiana Jones 96,Steven Spielberg,English,Sci-Fi,Energetic,https://www.imdb.com/title/tt3206083/
+12 Angry Men 97,Sidney Lumet,English,Comedy,Happy,https://www.imdb.com/title/tt6612029/
+Casablanca 98,Michael Curtiz,English,Horror,Angry,https://www.imdb.com/title/tt9254608/
+12 Angry Men 99,Sidney Lumet,English,Fantasy,Exciting,https://www.imdb.com/title/tt9064581/
+Indiana Jones 100,Steven Spielberg,English,Sci-Fi,Energetic,https://www.imdb.com/title/tt1902266/
+Pan's Labyrinth Extra 1,Guillermo del Toro,Spanish,Classic,Neutral,https://www.imdb.com/title/tt3958928/
+The Notebook Extra 2,Nick Cassavetes,English,Drama,Sad,https://www.imdb.com/title/tt1507485/
+Arrival Extra 3,Denis Villeneuve,English,Romance,Happy,https://www.imdb.com/title/tt2532297/
+Arrival Extra 4,Denis Villeneuve,English,Classic,Neutral,https://www.imdb.com/title/tt4585682/
+The Intouchables Extra 5,Olivier Nakache,French,Horror,Angry,https://www.imdb.com/title/tt6194477/
+12 Angry Men Extra 6,Sidney Lumet,English,Sci-Fi,Energetic,https://www.imdb.com/title/tt3199360/
+Eternal Sunshine Extra 7,Michel Gondry,English,Horror,Angry,https://www.imdb.com/title/tt8148816/
+Indiana Jones Extra 8,Steven Spielberg,English,Classic,Neutral,https://www.imdb.com/title/tt9288403/
+The Intouchables Extra 9,Olivier Nakache,French,Horror,Angry,https://www.imdb.com/title/tt1461530/
+Casablanca Extra 10,Michael Curtiz,English,Drama,Sad,https://www.imdb.com/title/tt7912211/
+The Notebook Extra 11,Nick Cassavetes,English,Adventure,Exciting,https://www.imdb.com/title/tt7648136/
+12 Angry Men Extra 12,Sidney Lumet,English,Romance,Happy,https://www.imdb.com/title/tt4856778/
+Casablanca Extra 13,Michael Curtiz,English,Classic,Neutral,https://www.imdb.com/title/tt7337302/
+The Shining Extra 14,Stanley Kubrick,English,Thriller,Angry,https://www.imdb.com/title/tt1554893/
+Arrival Extra 15,Denis Villeneuve,English,Drama,Sad,https://www.imdb.com/title/tt4321866/
+Eternal Sunshine Extra 16,Michel Gondry,English,Drama,Sad,https://www.imdb.com/title/tt4360485/
+The Notebook Extra 17,Nick Cassavetes,English,Romance,Happy,https://www.imdb.com/title/tt2477837/
+Pan's Labyrinth Extra 18,Guillermo del Toro,Spanish,Comedy,Happy,https://www.imdb.com/title/tt4988363/
+Eternal Sunshine Extra 19,Michel Gondry,English,Adventure,Exciting,https://www.imdb.com/title/tt4930039/
+Her Extra 20,Spike Jonze,English,Sci-Fi,Energetic,https://www.imdb.com/title/tt8059374/
+Pan's Labyrinth Extra 21,Guillermo del Toro,Spanish,Romance,Happy,https://www.imdb.com/title/tt5765538/
+Indiana Jones Extra 22,Steven Spielberg,English,Horror,Angry,https://www.imdb.com/title/tt8514933/
+Pan's Labyrinth Extra 23,Guillermo del Toro,Spanish,Classic,Neutral,https://www.imdb.com/title/tt2763364/
+The Shining Extra 24,Stanley Kubrick,English,Drama,Sad,https://www.imdb.com/title/tt1102984/
+Casablanca Extra 25,Michael Curtiz,English,Drama,Sad,https://www.imdb.com/title/tt8047749/
+Her Extra 26,Spike Jonze,English,Romance,Happy,https://www.imdb.com/title/tt9764989/
+The Intouchables Extra 27,Olivier Nakache,French,Horror,Angry,https://www.imdb.com/title/tt5149332/
+Indiana Jones Extra 28,Steven Spielberg,English,Fantasy,Exciting,https://www.imdb.com/title/tt4705894/
+Arrival Extra 29,Denis Villeneuve,English,Classic,Neutral,https://www.imdb.com/title/tt6592483/
+Pan's Labyrinth Extra 30,Guillermo del Toro,Spanish,Romance,Happy,https://www.imdb.com/title/tt3899594/
+Pan's Labyrinth Extra 31,Guillermo del Toro,Spanish,Sci-Fi,Energetic,https://www.imdb.com/title/tt4823255/
+Eternal Sunshine Extra 32,Michel Gondry,English,Adventure,Exciting,https://www.imdb.com/title/tt8630814/
+The Notebook Extra 33,Nick Cassavetes,English,Horror,Angry,https://www.imdb.com/title/tt4665084/
+Eternal Sunshine Extra 34,Michel Gondry,English,Romance,Happy,https://www.imdb.com/title/tt3613205/
+Arrival Extra 35,Denis Villeneuve,English,Classic,Neutral,https://www.imdb.com/title/tt8027157/
+Indiana Jones Extra 36,Steven Spielberg,English,Thriller,Angry,https://www.imdb.com/title/tt4772725/
+Her Extra 37,Spike Jonze,English,Comedy,Happy,https://www.imdb.com/title/tt8391839/
+Pan's Labyrinth Extra 38,Guillermo del Toro,Spanish,Comedy,Happy,https://www.imdb.com/title/tt4054250/
+Her Extra 39,Spike Jonze,English,Adventure,Exciting,https://www.imdb.com/title/tt7362750/
+Arrival Extra 40,Denis Villeneuve,English,Horror,Angry,https://www.imdb.com/title/tt8240248/
+Arrival Extra 41,Denis Villeneuve,English,Romance,Happy,https://www.imdb.com/title/tt2710676/
+Pan's Labyrinth Extra 42,Guillermo del Toro,Spanish,Drama,Sad,https://www.imdb.com/title/tt7947549/
+12 Angry Men Extra 43,Sidney Lumet,English,Drama,Sad,https://www.imdb.com/title/tt5514791/
+Indiana Jones Extra 44,Steven Spielberg,English,Classic,Neutral,https://www.imdb.com/title/tt4332861/
+Pan's Labyrinth Extra 45,Guillermo del Toro,Spanish,Horror,Angry,https://www.imdb.com/title/tt8599804/
+12 Angry Men Extra 46,Sidney Lumet,English,Adventure,Exciting,https://www.imdb.com/title/tt3442170/
+Arrival Extra 47,Denis Villeneuve,English,Classic,Neutral,https://www.imdb.com/title/tt6711678/
+Arrival Extra 48,Denis Villeneuve,English,Romance,Happy,https://www.imdb.com/title/tt7996235/
+The Intouchables Extra 49,Olivier Nakache,French,Thriller,Angry,https://www.imdb.com/title/tt7339301/
+12 Angry Men Extra 50,Sidney Lumet,English,Sci-Fi,Energetic,https://www.imdb.com/title/tt7845927/
