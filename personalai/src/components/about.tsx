@@ -19,7 +19,7 @@ export default function About() {
     {
       icon: <Heart className="h-8 w-8 text-pink-400" />,
       title: "Empathetic",
-      description: "We've designed PersonalAI to understand emotional nuances and respond with genuine care.",
+      description: "We've designed DailyMate to understand emotional nuances and respond with genuine care.",
     },
     {
       icon: <Sparkles className="h-8 w-8 text-purple-400" />,
@@ -42,7 +42,7 @@ export default function About() {
           >
             <h2 className="mb-6 text-4xl font-bold text-white md:text-5xl">About PersonalAI</h2>
             <p className="mb-6 text-lg text-gray-100">
-              PersonalAI was created with a simple mission: to help people live more balanced, fulfilling lives by
+              DailyMate was created with a simple mission: to help people live more balanced, fulfilling lives by
               providing personalized recommendations based on their emotional state.
             </p>
             <p className="mb-8 text-lg text-gray-100">

@@ -77,7 +77,7 @@ export default function HowItWorks() {
         >
           <h2 className="mb-4 text-4xl font-bold text-white md:text-5xl">How It Works</h2>
           <p className="mx-auto max-w-2xl text-lg text-gray-400">
-            PersonalAI uses advanced machine learning to understand you better and enhance your daily life.
+            DailyMate uses advanced machine learning to understand you better and enhance your daily life.
           </p>
         </motion.div>
 
