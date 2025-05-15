@@ -2,6 +2,14 @@ from flask import Flask, request, jsonify
 import pandas as pd
 from flask_cors import CORS
 from pymongo import MongoClient
+import spotipy
+from spotipy.oauth2 import SpotifyOAuth
+import time
+import os
+from dotenv import load_dotenv
+load_dotenv()  # Load from .env file
+
+
 
 app = Flask(__name__)
 CORS(app, resources={
@@ -22,7 +30,6 @@ df = df[df['Image-URL-M'].notnull() & df['Image-URL-M'].str.startswith("http")]
 
 mv = pd.read_csv("movie_recommendation_dataset_final.csv", encoding='ISO-8859-1')
 mv = mv[mv['link'].notnull() & mv['link'].str.startswith("http")]
-
 
 @app.route("/mood", methods=["POST"])
 def set_mood():
@@ -102,6 +109,47 @@ def recommend_movies():
         return jsonify({"movies": result})
     else:
         return jsonify({"message": "No movies found matching your criteria"}), 404
+
+@app.route('/play-song', methods=['GET'])
+def play_emotion():
+    # Spotify credentials (replace with environment variables in production)
+    client_id = os.getenv('SPOTIPY_CLIENT_ID')
+    client_secret = os.getenv('SPOTIPY_CLIENT_SECRET')
+    redirect_uri = os.getenv('SPOTIPY_REDIRECT_URI')
+
+    emotion_to_playlist = {
+        "Happy": "spotify:playlist:37i9dQZF1DXdPec7aLTmlC",  # Happy Hits
+        "Sad": "spotify:playlist:37i9dQZF1DX7qK8ma5wgG1",    # Sad Vibes
+        "Angry": "spotify:playlist:37i9dQZF1DWZLcGGC0HJbc",  # Rage Beats
+        "Calm": "spotify:playlist:37i9dQZF1DX4sWSpwq3LiO",   # Peaceful Piano
+    }
+
+    os.system("open /Applications/Spotify.app")
+    time.sleep(4)
+
+    scope = "user-read-playback-state user-modify-playback-state"
+    sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
+        client_id=client_id,
+        client_secret=client_secret,
+        redirect_uri=redirect_uri,
+        scope=scope
+    )   )
+
+    devices = sp.devices()
+    if not devices['devices']:
+        raise Exception("No active Spotify device found. Open Spotify on one of your devices.")
+    device_id = devices['devices'][0]['id']
+    data = request.get_json()
+    emotion = data.get('emotion', '').capitalize()
+    playlist_uri = emotion_to_playlist.get(emotion)
+    if not playlist_uri:
+        return jsonify({"error": f"No playlist found for emotion: {emotion}"}), 400
+
+    try:
+        sp.start_playback(device_id=device_id, context_uri=playlist_uri)
+        return jsonify({"message": f"Playing {emotion}-based playlist."}), 200
+    except Exception as e:
+        return jsonify({"error": "can't play music without premium"}), 500
 
 if __name__ == "__main__":
     app.run(debug=True)
