@@ -1,107 +1,287 @@
 "use client"
 
-import { useState } from "react"
-import { motion } from "framer-motion"
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/ui/tabs"
-//import { ThemeToggle } from "@/components/mode=toggle"
+import { useState, useEffect } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ChatbotCard } from "@/components/dashboard/chatbot-card"
 import { MoodDetectorCard } from "@/components/dashboard/mood-detector-card"
 import { MusicRecommenderCard } from "@/components/dashboard/music-recommender-card"
-import  BookRecommenderCard  from "@/components/dashboard/book-recommender-card"
-import { FeatureCard } from "@/components/dashboard/fashion-try-on-card"
-import  RoutineGenerator from "@/components/dashboard/daily-scheduler-card"
+import BookRecommenderCard from "@/components/dashboard/book-recommender-card"
+import MovieRecommenderCard from "@/components/dashboard/movie-card"
+import RoutineGenerator from "@/components/dashboard/daily-scheduler-card"
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState("all")
+  const [scrolled, setScrolled] = useState(false)
+
+  // Handle scroll effect for the "all" tab
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background/80 to-background px-4 py-6 md:px-8">
-      <div className="mx-auto w-full max-w-7xl space-y-8">
-        {/* Header */}
-        <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-          <motion.h1
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-3xl font-bold tracking-tight md:text-4xl"
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Aurora Background */}
+      <div className="absolute inset-0 bg-background/80 z-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-blue-500/10 to-teal-500/10 animate-aurora"></div>
+        <div className="absolute inset-0 bg-gradient-to-tr from-pink-500/10 via-indigo-500/10 to-cyan-500/10 animate-aurora-reverse"></div>
+      </div>
+
+      <div className="relative z-10 px-4 py-6 md:px-8">
+        <div className="mx-auto w-full max-w-7xl space-y-8">
+          {/* Header with floating effect */}
+          <motion.div
+            className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            PersonalAI Dashboard
-          </motion.h1>
-          {/* <div className="self-end sm:self-auto">
-            <ThemeToggle />
-          </div> */}
+            <motion.h1
+              className="text-3xl font-bold tracking-tight md:text-4xl bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600"
+              animate={{
+                scale: [1, 1.02, 1],
+                filter: ["brightness(1)", "brightness(1.2)", "brightness(1)"],
+              }}
+              transition={{
+                duration: 5,
+                repeat: Number.POSITIVE_INFINITY,
+                repeatType: "reverse",
+              }}
+            >
+              PersonalAI Dashboard
+            </motion.h1>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+              className="self-end sm:self-auto"
+            >
+              {/* Theme toggle placeholder */}
+            </motion.div>
+          </motion.div>
+
+          {/* Tabs with glow effect */}
+          <Tabs defaultValue="all" onValueChange={setActiveTab} className="space-y-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <TabsList className="grid w-full grid-cols-2 gap-2 sm:grid-cols-4 md:grid-cols-7 bg-background/50 backdrop-blur-sm border border-purple-500/20 shadow-lg">
+                <TabsTrigger
+                  value="all"
+                  className="data-[state=active]:bg-purple-500/20 data-[state=active]:text-purple-700 dark:data-[state=active]:text-purple-300"
+                >
+                  All
+                </TabsTrigger>
+                <TabsTrigger
+                  value="chat"
+                  className="data-[state=active]:bg-blue-500/20 data-[state=active]:text-blue-700 dark:data-[state=active]:text-blue-300"
+                >
+                  Chat
+                </TabsTrigger>
+                <TabsTrigger
+                  value="mood"
+                  className="data-[state=active]:bg-pink-500/20 data-[state=active]:text-pink-700 dark:data-[state=active]:text-pink-300"
+                >
+                  Mood
+                </TabsTrigger>
+                <TabsTrigger
+                  value="music"
+                  className="data-[state=active]:bg-green-500/20 data-[state=active]:text-green-700 dark:data-[state=active]:text-green-300"
+                >
+                  Music
+                </TabsTrigger>
+                <TabsTrigger
+                  value="books"
+                  className="data-[state=active]:bg-amber-500/20 data-[state=active]:text-amber-700 dark:data-[state=active]:text-amber-300"
+                >
+                  Books
+                </TabsTrigger>
+                <TabsTrigger
+                  value="movies"
+                  className="data-[state=active]:bg-red-500/20 data-[state=active]:text-red-700 dark:data-[state=active]:text-red-300"
+                >
+                  Movies
+                </TabsTrigger>
+                <TabsTrigger
+                  value="schedule"
+                  className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-700 dark:data-[state=active]:text-cyan-300"
+                >
+                  Schedule
+                </TabsTrigger>
+              </TabsList>
+            </motion.div>
+
+            {/* All Tabs with scroll sections */}
+            <AnimatePresence mode="wait">
+              <TabsContent value="all" className="space-y-16 pb-20">
+                {/* Chat Section */}
+                <motion.section
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  className="space-y-4"
+                >
+                  <h2 className="text-2xl font-semibold text-purple-600 dark:text-purple-400">Chat Assistant</h2>
+                  <div className="grid grid-cols-1">
+                    <ChatbotCard />
+                  </div>
+                </motion.section>
+
+                {/* Mood Section */}
+                <motion.section
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  className="space-y-4"
+                >
+                  <h2 className="text-2xl font-semibold text-pink-600 dark:text-pink-400">Mood Analysis</h2>
+                  <div className="grid grid-cols-1">
+                    <MoodDetectorCard />
+                  </div>
+                </motion.section>
+
+                {/* Music Section */}
+                <motion.section
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  className="space-y-4"
+                >
+                  <h2 className="text-2xl font-semibold text-green-600 dark:text-green-400">Music Recommendations</h2>
+                  <div className="grid grid-cols-1">
+                    <MusicRecommenderCard />
+                  </div>
+                </motion.section>
+
+                {/* Books Section */}
+                <motion.section
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  className="space-y-4"
+                >
+                  <h2 className="text-2xl font-semibold text-amber-600 dark:text-amber-400">Book Recommendations</h2>
+                  <div className="grid grid-cols-1">
+                    <BookRecommenderCard />
+                  </div>
+                </motion.section>
+
+                {/* Movies Section (Replaced Fashion) */}
+                <motion.section
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  className="space-y-4"
+                >
+                  <h2 className="text-2xl font-semibold text-red-600 dark:text-red-400">Movie Recommendations</h2>
+                  <div className="grid grid-cols-1">
+                    <MovieRecommenderCard />
+                  </div>
+                </motion.section>
+
+                {/* Schedule Section */}
+                <motion.section
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  className="space-y-4"
+                >
+                  <h2 className="text-2xl font-semibold text-cyan-600 dark:text-cyan-400">Daily Schedule</h2>
+                  <div className="grid grid-cols-1">
+                    <RoutineGenerator />
+                  </div>
+                </motion.section>
+              </TabsContent>
+            </AnimatePresence>
+
+            {/* Individual Tabs */}
+            <TabsContent value="chat">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.4 }}
+                className="grid grid-cols-1"
+              >
+                <ChatbotCard fullWidth />
+              </motion.div>
+            </TabsContent>
+
+            <TabsContent value="mood">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.4 }}
+                className="grid grid-cols-1"
+              >
+                <MoodDetectorCard fullWidth />
+              </motion.div>
+            </TabsContent>
+
+            <TabsContent value="music">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.4 }}
+                className="grid grid-cols-1"
+              >
+                <MusicRecommenderCard fullWidth />
+              </motion.div>
+            </TabsContent>
+
+            <TabsContent value="books">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.4 }}
+                className="grid grid-cols-1"
+              >
+                <BookRecommenderCard />
+              </motion.div>
+            </TabsContent>
+
+            <TabsContent value="movies">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.4 }}
+                className="grid grid-cols-1"
+              >
+                <MovieRecommenderCard fullWidth />
+              </motion.div>
+            </TabsContent>
+
+            <TabsContent value="schedule">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.4 }}
+                className="grid grid-cols-1"
+              >
+                <RoutineGenerator/>
+              </motion.div>
+            </TabsContent>
+          </Tabs>
         </div>
-
-        {/* Tabs */}
-        <Tabs defaultValue="all" onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-2 gap-2 sm:grid-cols-4 md:grid-cols-7">
-            <TabsTrigger value="all">All</TabsTrigger>
-            <TabsTrigger value="chat">Chat</TabsTrigger>
-            <TabsTrigger value="mood">Mood</TabsTrigger>
-            <TabsTrigger value="music">Music</TabsTrigger>
-            <TabsTrigger value="books">Books</TabsTrigger>
-            <TabsTrigger value="fashion">Fashion</TabsTrigger>
-            <TabsTrigger value="schedule">Schedule</TabsTrigger>
-          </TabsList>
-
-          {/* All Tabs */}
-          <TabsContent value="all">
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              <ChatbotCard />
-              <MoodDetectorCard />
-              <MusicRecommenderCard />
-              <BookRecommenderCard />
-              <FeatureCard>
-                <div>Fashion Try-On Feature</div>
-              </FeatureCard>
-              <RoutineGenerator />
-            </div>
-          </TabsContent>
-
-          {/* Individual Tabs */}
-          <TabsContent value="chat">
-            <div className="grid grid-cols-1">
-              <ChatbotCard fullWidth />
-            </div>
-          </TabsContent>
-
-          <TabsContent value="mood">
-            <div className="grid grid-cols-1">
-              <MoodDetectorCard fullWidth />
-            </div>
-          </TabsContent>
-
-          <TabsContent value="music">
-            <div className="grid grid-cols-1">
-              <MusicRecommenderCard fullWidth />
-            </div>
-          </TabsContent>
-
-          <TabsContent value="books">
-            <div className="grid grid-cols-1">
-              <BookRecommenderCard />
-            </div>
-          </TabsContent>
-
-          <TabsContent value="fashion">
-            <div className="grid grid-cols-1">
-              <FeatureCard>
-                <div>Fashion Try-On Feature</div>
-              </FeatureCard>
-            </div>
-          </TabsContent>
-
-          <TabsContent value="schedule">
-            <div className="grid grid-cols-1">
-              <RoutineGenerator/>
-            </div>
-          </TabsContent>
-        </Tabs>
       </div>
     </div>
   )

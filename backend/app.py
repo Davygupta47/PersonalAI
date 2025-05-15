@@ -32,25 +32,26 @@ def recommend_books_by_mood():
     ]
     return jsonify({"books": result})
 
-@app.route('/recommend/movies', methods=['GET'])
+@app.route('/movies', methods=['GET'])
 def recommend_movies():
-    """Get movie recommendations based on genre and emotion"""
-    # Get parameters from query string
-    genre_input = request.args.get('genre', '').strip().title()
-    emotion_input = request.args.get('emotion', '').strip().title()
+    """Get movie recommendations based on genre and emotion (case-insensitive)"""
+    # Get parameters from query string and convert to lowercase
+    genre_input = request.args.get('genre', '').strip().lower()
+    emotion_input = request.args.get('emotion', '').strip().lower()
+
     # Validate required parameters
     if not genre_input or not emotion_input:
         return jsonify({"error": "Both genre and emotion parameters are required"}), 400
 
-    # Filter movies
-    recommendations = mv[
-        (mv['genre'] == genre_input) & 
-        (mv['emotion'] == emotion_input)
+    # Convert dataframe columns to lowercase for case-insensitive matching
+    filtered_df = mv[
+        (mv['genre'].str.lower() == genre_input) &
+        (mv['emotion'].str.lower() == emotion_input)
     ]
-    
-    if not recommendations.empty:
+
+    if not filtered_df.empty:
         result = []
-        for _, row in recommendations.iterrows():
+        for _, row in filtered_df.iterrows():
             movie_data = {
                 'name': row['name'],
                 'director': row['director'],
