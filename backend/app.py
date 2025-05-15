@@ -4,7 +4,13 @@ from flask_cors import CORS
 from pymongo import MongoClient
 
 app = Flask(__name__)
-CORS(app, origins=["http://localhost:3000"])
+CORS(app, resources={
+    r"/recommend/*": {
+        "origins": ["http://localhost:3000", "http://192.168.0.142:3000"],
+        "methods": ["GET", "POST"],
+        "allow_headers": ["Content-Type"]
+    }
+})
 
 # MongoDB setup
 client = MongoClient("mongodb://localhost:27017/")
