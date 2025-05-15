@@ -78,13 +78,15 @@ export default function MovieRecommenderCard({ fullWidth }: MovieRecommenderCard
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Select Genre" />
             </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="Drama">Drama</SelectItem>
-              <SelectItem value="Sci-Fi">Sci-Fi</SelectItem>
-              <SelectItem value="Adventure">Adventure</SelectItem>
-              <SelectItem value="Comedy">Comedy</SelectItem>
-              <SelectItem value="Action">Action</SelectItem>
-              <SelectItem value="Horror">Horror</SelectItem>
+            <SelectContent className="bg-white text-black">
+              <SelectItem className="hover:bg-gray-400" value="Drama">Drama</SelectItem>
+              <SelectItem className="hover:bg-gray-400" value="Sci-Fi">Sci-Fi</SelectItem>
+              <SelectItem className="hover:bg-gray-400" value="Adventure">Adventure</SelectItem>
+              <SelectItem className="hover:bg-gray-400" value="Comedy">Comedy</SelectItem>
+              <SelectItem className="hover:bg-gray-400" value="Thriller">Thriller</SelectItem>
+              <SelectItem className="hover:bg-gray-400" value="Horror">Horror</SelectItem>
+              <SelectItem className="hover:bg-gray-400" value="Fantasy">Fantasy</SelectItem>
+              <SelectItem className="hover:bg-gray-400" value="Classic">Classic</SelectItem>
               {/* Add more genres as needed */}
             </SelectContent>
           </Select>

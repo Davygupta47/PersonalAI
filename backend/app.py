@@ -22,6 +22,11 @@ CORS(app, resources={
         "origins": ["http://localhost:3000", "http://192.168.0.142:3000"],
         "methods": ["GET", "POST"],
         "allow_headers": ["Content-Type"]
+    },
+     r"/play-song/*": {
+        "origins": ["http://localhost:3000", "http://192.168.0.142:3000"],
+        "methods": ["GET", "POST"],
+        "allow_headers": ["Content-Type"]
     }
 })
 
@@ -129,7 +134,8 @@ def play_emotion():
         "Calm": "spotify:playlist:37i9dQZF1DX4sWSpwq3LiO",   # Peaceful Piano
     }
 
-    os.system("open /Applications/Spotify.app")
+    # os.system("open /Applications/Spotify.app") for mac
+    os.system("start spotify")
     time.sleep(4)
 
     scope = "user-read-playback-state user-modify-playback-state"
@@ -144,8 +150,8 @@ def play_emotion():
     if not devices['devices']:
         raise Exception("No active Spotify device found. Open Spotify on one of your devices.")
     device_id = devices['devices'][0]['id']
-    data = request.get_json()
-    emotion = data.get('emotion', '').capitalize()
+    # data = request.get_json()
+    emotion = request.args.get('emotion', '').capitalize()
     playlist_uri = emotion_to_playlist.get(emotion)
     if not playlist_uri:
         return jsonify({"error": f"No playlist found for emotion: {emotion}"}), 400

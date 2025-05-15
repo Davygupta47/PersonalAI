@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ChatbotCard } from "@/components/dashboard/chatbot-card"
 import { MoodDetectorCard } from "@/components/dashboard/mood-detector-card"
-import { MusicRecommenderCard } from "@/components/dashboard/music-recommender-card"
+import  MusicRecommenderCard  from "@/components/dashboard/music-recommender-card"
 import BookRecommenderCard from "@/components/dashboard/book-recommender-card"
 import MovieRecommenderCard from "@/components/dashboard/movie-card"
 import RoutineGenerator from "@/components/dashboard/daily-scheduler-card"
@@ -241,7 +241,7 @@ export default function Dashboard() {
                 transition={{ duration: 0.4 }}
                 className="grid grid-cols-1"
               >
-                <MusicRecommenderCard fullWidth />
+                <MusicRecommenderCard/>
               </motion.div>
             </TabsContent>
 
