@@ -10,6 +10,7 @@ import HowItWorks from "@/components/how-it-works"
 import About from "@/components/about"
 import AuroraBackground from "@/components/aurora-back"
 import FloatingParticles from "@/components/floating-part"
+import Image from 'next/image';
 
 
 
@@ -33,6 +34,7 @@ export default function Home() {
         <FloatingParticles />
 
         <div className="z-20 flex flex-col items-center justify-center px-4 text-center">
+          <Image className="mb-15" src="/logo.png" alt="Logo" width={200} height={200} />
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

@@ -108,9 +108,9 @@ export default function HowItWorks() {
           <div className="relative overflow-hidden rounded-xl border border-gray-800 bg-gray-800/30 p-1 backdrop-blur-sm">
             <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10" />
             <div className="relative rounded-lg bg-gray-900/80 p-6 sm:p-8">
-              <h3 className="mb-4 text-center text-2xl font-bold text-white">Powered by Gemini AI</h3>
+              <h3 className="mb-4 text-center text-2xl font-bold text-white">Powered by Gemini AI and Groq AI</h3>
               <p className="text-center text-gray-400">
-                Our platform leverages Google&apos;s Gemini AI to provide intelligent, context-aware recommendations that
+                Our platform leverages Google&apos;s Gemini AI and Groq&apos;s AI to provide intelligent, context-aware recommendations that
                 adapt to your unique personality and preferences over time.
               </p>
             </div>
