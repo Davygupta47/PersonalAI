@@ -100,8 +100,9 @@ export default function About() {
                   </div>
                   <div className="mt-8 space-y-4">
                     <div className="overflow-hidden rounded-lg bg-gray-800/80 p-4 backdrop-blur-sm">
-                      <h4 className="mb-2 font-medium text-indigo-300">Style suggestion</h4>
-                      <p className="text-sm text-gray-300">Bright colors can help improve your mood today</p>
+                      <h4 className="mb-2 font-medium text-indigo-300">Movie recommendation</h4>
+                      <p className="text-sm text-gray-300">Yours daily pick for a good movie.
+                      </p>
                     </div>
                     <div className="overflow-hidden rounded-lg bg-gray-800/80 p-4 backdrop-blur-sm">
                       <h4 className="mb-2 font-medium text-pink-300">Daily routine</h4>
