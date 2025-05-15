@@ -51,7 +51,7 @@ export default function Home() {
             style={{ willChange: "opacity, transform" }}
             className="mb-8 max-w-2xl text-xl text-white/80 drop-shadow-md"
           >
-            Talk. Feel. Plan. Dress. Listen. All in one.
+            Talk. Feel. Watch. Plan. Listen. All in one.
           </motion.p>
 
           <motion.div
