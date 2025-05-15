@@ -135,8 +135,12 @@ def play_emotion():
     }
 
     # os.system("open /Applications/Spotify.app") for mac
-    os.system("start spotify")
-    time.sleep(4)
+    # os.system("start spotify")
+    # time.sleep(4)
+    devices = sp.devices()
+    if not devices['devices']:
+        raise Exception("No active Spotify device found. Open Spotify on one of your devices.")
+
 
     scope = "user-read-playback-state user-modify-playback-state"
     sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
