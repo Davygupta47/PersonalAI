@@ -40,9 +40,9 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             style={{ willChange: "opacity, transform" }}
-            className="mb-4 text-5xl font-extrabold tracking-tight text-white md:text-7xl"
+            className="mb-4 text-5xl font-extrabold tracking-tight text-green-400 md:text-7xl"
           >
-            PersonalAI
+            DailyMate
             <span className="block text-3xl font-bold text-pink-300 md:text-4xl">Your Smart Lifestyle Companion</span>
           </motion.h1>
 
@@ -53,7 +53,7 @@ export default function Home() {
             style={{ willChange: "opacity, transform" }}
             className="mb-8 max-w-2xl text-xl text-white/80 drop-shadow-md"
           >
-            Talk. Feel. Plan. Dress. Listen. All in one.
+            Talk. Feel. Watch. Plan. Listen. All in one.
           </motion.p>
 
           <motion.div

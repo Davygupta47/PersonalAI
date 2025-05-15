@@ -41,7 +41,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "PersonalAI - Your Smart Lifestyle Companion",
+  title: "DailyMate - Your Smart Lifestyle Companion",
   description: "A smart lifestyle assistant for all your needs",
 }
 

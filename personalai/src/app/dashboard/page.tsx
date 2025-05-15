@@ -53,7 +53,7 @@ export default function Dashboard() {
                 repeatType: "reverse",
               }}
             >
-              PersonalAI Dashboard
+              Dashboard
             </motion.h1>
 
             <motion.div

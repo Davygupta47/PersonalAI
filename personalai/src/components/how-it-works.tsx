@@ -2,9 +2,10 @@
 
 import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
-import { MessageSquare, Music, BookOpen, ShoppingBag, Calendar } from "lucide-react"
+import { MessageSquare, Music, BookOpen, ShoppingBag, Calendar, BookAudioIcon, TheaterIcon, CameraOffIcon, CameraIcon, Theater } from "lucide-react"
 import AuroraBackground from "@/components/aurora-back"
 import FloatingParticles from "@/components/floating-part"
+import MovieRecommenderCard from "./dashboard/movie-card"
 
 export default function HowItWorks() {
   const ref = useRef(null)
@@ -28,9 +29,9 @@ export default function HowItWorks() {
       description: "Discover reading material that resonates with how you're feeling or helps shift your perspective.",
     },
     {
-      icon: <ShoppingBag className="h-10 w-10 text-indigo-400" />,
-      title: "Style Recommendations",
-      description: "Receive clothing suggestions that complement your mood and help you express yourself.",
+      icon: <Theater className="h-10 w-10 text-indigo-400" />,
+      title: "Movie Recommendations",
+      description: "Receive movie suggestions that complement your mood and help you to binge watch.",
     },
     {
       icon: <Calendar className="h-10 w-10 text-purple-400" />,
@@ -76,7 +77,7 @@ export default function HowItWorks() {
         >
           <h2 className="mb-4 text-4xl font-bold text-white md:text-5xl">How It Works</h2>
           <p className="mx-auto max-w-2xl text-lg text-gray-400">
-            PersonalAI uses advanced machine learning to understand you better and enhance your daily life.
+            DailyMate uses advanced machine learning to understand you better and enhance your daily life.
           </p>
         </motion.div>
 
