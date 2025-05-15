@@ -1,20 +1,20 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Loader2, Music, Volume2 } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Loader2, Music, Volume2 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-type Emotion = "Happy" | "Sad" | "Angry" | "Calm"
+type Emotion = "Happy" | "Sad" | "Angry" | "Calm";
 
 interface EmotionOption {
-  value: Emotion
-  label: string
-  color: string
-  icon: string
-  description: string
+  value: Emotion;
+  label: string;
+  color: string;
+  icon: string;
+  description: string;
 }
 
 const emotions: EmotionOption[] = [
@@ -46,41 +46,47 @@ const emotions: EmotionOption[] = [
     icon: "😌",
     description: "Peaceful and relaxing sounds",
   },
-]
+];
 
 export default function MusicRecommenderCard() {
-  const [emotion, setEmotion] = useState<Emotion>("Happy")
-  const [message, setMessage] = useState("")
-  const [isLoading, setIsLoading] = useState(false)
-  const [isPlaying, setIsPlaying] = useState(false)
+  const [emotion, setEmotion] = useState<Emotion>("Happy");
+  const [message, setMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const playEmotion = async () => {
-    setIsLoading(true)
-    setMessage("")
+    setIsLoading(true);
+    setMessage("");
 
     try {
-      const response = await fetch(`https://personalai-y76b.onrender.com/play-song?emotion=${emotion}`, {
-        method: "GET",
-      })
+      const response = await fetch(
+        `http://127.0.0.1:5000/play-song?emotion=${emotion}`,
+        {
+          method: "GET",
+        }
+      );
 
-      const data = await response.json()
-      if (response.ok) {
-        setMessage(data.message)
-        setIsPlaying(true)
+      const data = await response.json();
+
+      if (response.ok && data.playlist_url) {
+        // Open the Spotify playlist in a new tab
+        window.open(data.playlist_url, "_blank");
+        setMessage(`Playing ${emotion} playlist on Spotify`);
+        setIsPlaying(true);
       } else {
-        setMessage(data.error || "Something went wrong")
-        setIsPlaying(false)
+        setMessage(data.error || "Something went wrong");
+        setIsPlaying(false);
       }
     } catch (err) {
-      console.error(err)
-      setMessage("Failed to connect to backend")
-      setIsPlaying(false)
+      console.error(err);
+      setMessage("Failed to connect to backend");
+      setIsPlaying(false);
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
-  const selectedEmotion = emotions.find((e) => e.value === emotion)
+  const selectedEmotion = emotions.find((e) => e.value === emotion);
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-violet-900 via-purple-800 to-indigo-900 p-6">
@@ -93,7 +99,9 @@ export default function MusicRecommenderCard() {
             </h1>
           </div>
 
-          <p className="text-center text-purple-200 mb-8">Select an emotion to play the perfect playlist</p>
+          <p className="text-center text-purple-200 mb-8">
+            Select an emotion to play the perfect playlist
+          </p>
 
           <div className="grid grid-cols-2 gap-3 mb-8">
             {emotions.map((item) => (
@@ -106,13 +114,17 @@ export default function MusicRecommenderCard() {
                   "relative p-4 rounded-xl transition-all duration-300 border-2",
                   emotion === item.value
                     ? "border-white/50 bg-white/20"
-                    : "border-transparent bg-white/10 hover:bg-white/15",
+                    : "border-transparent bg-white/10 hover:bg-white/15"
                 )}
               >
                 <div className="flex flex-col items-center">
                   <span className="text-3xl mb-2">{item.icon}</span>
                   <span className="font-medium text-white">{item.label}</span>
-                  {emotion === item.value && <p className="text-xs text-purple-200 mt-1">{item.description}</p>}
+                  {emotion === item.value && (
+                    <p className="text-xs text-purple-200 mt-1">
+                      {item.description}
+                    </p>
+                  )}
                 </div>
                 {emotion === item.value && (
                   <motion.div
@@ -202,5 +214,5 @@ export default function MusicRecommenderCard() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

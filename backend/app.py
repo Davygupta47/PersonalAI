@@ -128,43 +128,22 @@ def play_emotion():
     redirect_uri = os.getenv('SPOTIPY_REDIRECT_URI')
 
     emotion_to_playlist = {
-        "Happy": "spotify:playlist:37i9dQZF1DXdPec7aLTmlC",  # Happy Hits
-        "Sad": "spotify:playlist:37i9dQZF1DX7qK8ma5wgG1",    # Sad Vibes
-        "Angry": "spotify:playlist:37i9dQZF1DWZLcGGC0HJbc",  # Rage Beats
-        "Calm": "spotify:playlist:37i9dQZF1DX4sWSpwq3LiO",   # Peaceful Piano
+        "Happy": "https://open.spotify.com/playlist/37i9dQZF1DXdPec7aLTmlC",  # Happy Hits
+        "Sad": "https://open.spotify.com/playlist/37i9dQZF1DX7qK8ma5wgG1",    # Sad Vibes
+        "Angry": "https://open.spotify.com/playlist/37i9dQZF1DWZLcGGC0HJbc",  # Rage Beats
+        "Calm": "https://open.spotify.com/playlist/37i9dQZF1DX4sWSpwq3LiO",   # Peaceful Piano
     }
 
-    # os.system("open /Applications/Spotify.app") for mac
-    # os.system("start spotify")
-    # time.sleep(4)
-    devices = sp.devices()
-    if not devices['devices']:
-        raise Exception("No active Spotify device found. Open Spotify on one of your devices.")
-
-
-    scope = "user-read-playback-state user-modify-playback-state"
-    sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
-        client_id=client_id,
-        client_secret=client_secret,
-        redirect_uri=redirect_uri,
-        scope=scope
-    )   )
-
-    devices = sp.devices()
-    if not devices['devices']:
-        raise Exception("No active Spotify device found. Open Spotify on one of your devices.")
-    device_id = devices['devices'][0]['id']
-    # data = request.get_json()
+    # Get the emotion from the query parameters
     emotion = request.args.get('emotion', '').capitalize()
-    playlist_uri = emotion_to_playlist.get(emotion)
-    if not playlist_uri:
+
+    # Look up the corresponding playlist URL
+    playlist_url = emotion_to_playlist.get(emotion)
+    if not playlist_url:
         return jsonify({"error": f"No playlist found for emotion: {emotion}"}), 400
 
-    try:
-        sp.start_playback(device_id=device_id, context_uri=playlist_uri)
-        return jsonify({"message": f"Playing {emotion}-based playlist."}), 200
-    except Exception as e:
-        return jsonify({"error": "can't play music without premium"}), 500
+    # Return the playlist URL to the frontend
+    return jsonify({"playlist_url": playlist_url}), 200
 
 if __name__ == "__main__":
     app.run(debug=True)
