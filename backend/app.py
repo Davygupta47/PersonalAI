@@ -13,7 +13,7 @@ load_dotenv()  # Load from .env file
 
 app = Flask(__name__)
 CORS(app, resources={
-    r"/*": {
+    r"/recommend/*": {
         "origins": ["http://localhost:3000", "http://192.168.0.142:3000"],
         "methods": ["GET", "POST"],
         "allow_headers": ["Content-Type"]
